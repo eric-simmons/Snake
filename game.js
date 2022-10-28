@@ -1,4 +1,4 @@
-import { update as updateSnake, draw as drawSnake, snakeSpeed } from './snake.js'
+import { update as updateSnake, draw as drawSnake, snakeSpeed, getSnakeHead, snakeIntersection } from './snake.js'
 import { update as updateFood, draw as drawFood } from './food.js'
 import { outsideGrid } from './grid.js'
 
@@ -31,7 +31,7 @@ function main(currentTime) {
 
     update()
     draw()
-    checkDeath()
+    
 }
 
 window.requestAnimationFrame(main)
@@ -39,6 +39,7 @@ window.requestAnimationFrame(main)
 function update() {
     updateSnake()
     updateFood()
+    checkDeath()
 }
 
 function draw() {
@@ -49,4 +50,4 @@ function draw() {
 
 function checkDeath() {
     gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
-  }
+}
